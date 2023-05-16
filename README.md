@@ -1,0 +1,2 @@
+# the_truth_of_operationg_system
+本仓库是自己学习操作系统真象还原的代码仓库，是基于作者代码的修改与注释
