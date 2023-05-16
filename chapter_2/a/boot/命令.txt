@@ -1,0 +1,2 @@
+nasm -o mbr mbr.S
+dd if=/home/rlk/Desktop/the_truth_of_operationg_system/chapter_2/a/boot/mbr of=/home/rlk/Desktop/bochs/hd60M.img bs=512 count=1 conv=notrunc
