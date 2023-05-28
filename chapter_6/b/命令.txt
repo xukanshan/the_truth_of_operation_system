@@ -1,0 +1,15 @@
+nasm -o /home/rlk/Desktop/mbr /home/rlk/Desktop/the_truth_of_operationg_system/chapter_6/b/boot/mbr.S -I /home/rlk/Desktop/the_truth_of_operationg_system/chapter_6/b/boot/include/
+
+dd if=/home/rlk/Desktop/mbr of=/home/rlk/Desktop/bochs/hd60M.img bs=512 count=1 conv=notrunc
+
+nasm -o /home/rlk/Desktop/loader /home/rlk/Desktop/the_truth_of_operationg_system/chapter_6/b/boot/loader.S -I /home/rlk/Desktop/the_truth_of_operationg_system/chapter_6/b/boot/include/
+
+dd if=/home/rlk/Desktop/loader of=/home/rlk/Desktop/bochs/hd60M.img bs=512 count=4 conv=notrunc seek=2
+
+nasm -o /home/rlk/Desktop/print.o -f elf /home/rlk/Desktop/the_truth_of_operationg_system/chapter_6/b/lib/kernel/print.S 
+
+gcc-4.4 -o /home/rlk/Desktop/main.o -c -m32 -I /home/rlk/Desktop/the_truth_of_operationg_system/chapter_6/b/lib/kernel/ /home/rlk/Desktop/the_truth_of_operationg_system/chapter_6/b/kernel/main.c
+
+ld -o /home/rlk/Desktop/kernel.bin -m elf_i386 -Ttext 0xc0001500 -e main /home/rlk/Desktop/main.o /home/rlk/Desktop/print.o
+
+dd if=/home/rlk/Desktop/kernel.bin of=/home/rlk/Desktop/bochs/hd60M.img bs=512 count=200 conv=notrunc seek=9
