@@ -7,4 +7,5 @@
 nasm -o build/mbr -I ./boot/include/ boot/mbr.S 
 dd if=build/mbr of=/home/rlk/Desktop/bochs/hd60M.img bs=512 count=1 conv=notrunc
 
-
+清除build文件夹内所有的编译好的二进制文件
+rm -rf build/*

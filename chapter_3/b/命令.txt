@@ -10,3 +10,6 @@ dd if=build/mbr of=/home/rlk/Desktop/bochs/hd60M.img bs=512 count=1 conv=notrunc
 编译并写入loader
 nasm -o build/loader -I ./boot/include/ ./boot/loader.S 
 dd if=build/loader of=/home/rlk/Desktop/bochs/hd60M.img bs=512 count=1 conv=notrunc seek=2
+
+清除build文件夹内所有的编译好的二进制文件
+rm -rf build/*
