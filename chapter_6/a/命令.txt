@@ -23,4 +23,5 @@ ld -m elf_i386 -Ttext 0x00001500 -e main -o build/kernel.bin  build/main.o build
 写入内核
 dd if=build/kernel.bin of=/home/rlk/Desktop/bochs/hd60M.img bs=512 count=200 conv=notrunc seek=9
 
-
+清除build文件夹内所有的编译好的二进制文件
+rm -rf build/*
