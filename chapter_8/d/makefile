@@ -19,7 +19,8 @@ LDFLAGS= -Ttext $(ENTRY_POINT) -e main -Map $(BUILD_DIR)/kernel.map -m elf_i386
 
 OBJS=$(BUILD_DIR)/main.o $(BUILD_DIR)/init.o \
 	$(BUILD_DIR)/interrupt.o $(BUILD_DIR)/timer.o $(BUILD_DIR)/kernel.o \
-	$(BUILD_DIR)/print.o $(BUILD_DIR)/debug.o
+	$(BUILD_DIR)/print.o $(BUILD_DIR)/debug.o $(BUILD_DIR)/string.o $(BUILD_DIR)/bitmap.o \
+	$(BUILD_DIR)/memory.o
 #顺序最好是调用在前，实现在后
 
 ######################编译两个启动文件的代码#####################################
@@ -47,6 +48,14 @@ $(BUILD_DIR)/timer.o:device/timer.c
 $(BUILD_DIR)/debug.o:kernel/debug.c
 	$(CC) $(CFLAGS) -o $@ $<
 
+$(BUILD_DIR)/string.o:lib/string.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(BUILD_DIR)/bitmap.o:lib/kernel/bitmap.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(BUILD_DIR)/memory.o:kernel/memory.c
+	$(CC) $(CFLAGS) -o $@ $<
 ###################编译汇编内核代码#####################################################
 $(BUILD_DIR)/kernel.o:kernel/kernel.S 
 	$(AS) $(ASFLAGS) -o $@ $<
