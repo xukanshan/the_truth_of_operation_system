@@ -2,6 +2,7 @@
 #include "stdint.h"
 #include "print.h"
 #include "debug.h"
+#include "string.h"
 
 #define PG_SIZE 4096    //一页的大小
 #define MEM_BITMAP_BASE 0xc009a000  //这个地址是位图的起始地址，1MB内存布局中，9FBFF是最大一段可用区域的边界，而我们计划这个可用空间最后的位置将来用来

@@ -7,6 +7,7 @@
 #include "debug.h"
 #include "interrupt.h"
 #include "print.h"
+#include "process.h"
 
 #define PG_SIZE 4096
 
