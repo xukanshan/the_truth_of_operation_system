@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdio-kernel.h": "c",
+        "print.h": "c",
+        "stdio.h": "c",
+        "global.h": "c",
+        "string.h": "c",
+        "memory.h": "c"
+    }
+}
