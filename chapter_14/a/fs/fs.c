@@ -75,7 +75,7 @@ static void partition_format(struct partition* part) {
     /* 初始化块位图block_bitmap */
     buf[0] |= 0x01;       // 第0个块预留给根目录,位图中先占位
     uint32_t block_bitmap_last_byte = block_bitmap_bit_len / 8; //计算出块位图最后一字节的偏移
-    uint8_t  block_bitmap_last_bit  = block_bitmap_bit_len % 8; //计算出块位图最后一位的偏移
+    uint8_t  block_bitmap_last_bit  = block_bitmap_bit_len % 8; //计算出块位图最后一字节中有效位的数量
     uint32_t last_size = SECTOR_SIZE - (block_bitmap_last_byte % SECTOR_SIZE);	     // last_size是位图所在最后一个扇区中，不足一扇区的其余部分
 
     /* 1 先将位图最后一字节到其所在的扇区的结束全置为1,即超出实际块数的部分直接置为已占用*/
@@ -83,7 +83,7 @@ static void partition_format(struct partition* part) {
     
     /* 2 再将上一步中覆盖的最后一字节内的有效位重新置0 */
     uint8_t bit_idx = 0;
-    while (bit_idx <= block_bitmap_last_bit) {
+    while (bit_idx < block_bitmap_last_bit) {
         buf[block_bitmap_last_byte] &= ~(1 << bit_idx++);
     }
     ide_write(hd, sb.block_bitmap_lba, buf, sb.block_bitmap_sects);
