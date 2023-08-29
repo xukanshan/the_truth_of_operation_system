@@ -61,6 +61,7 @@ static bool mount_partition(struct list_elem* pelem, int arg) {
 
     /* 此处返回true是为了迎合主调函数list_traversal的实现,与函数本身功能无关。
         只有返回true时list_traversal才会停止遍历,减少了后面元素无意义的遍历.*/
+        sys_free(sb_buf);
         return true;
     }
     return false;     // 使list_traversal继续遍历
