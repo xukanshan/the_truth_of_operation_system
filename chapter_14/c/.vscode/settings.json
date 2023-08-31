@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "ide.h": "c",
+        "stdint.h": "c",
+        "inode.h": "c",
+        "debug.h": "c",
+        "super_block.h": "c",
+        "string.h": "c",
+        "interrupt.h": "c"
+    }
+}
