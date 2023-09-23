@@ -1,4 +1,4 @@
-# the_truth_of_operationg_system
+# the_truth_of_operation_system
 
 ## 本仓库是自己学习操作系统真象还原的代码仓库，请配合本人的笔记与视频使用。
 
